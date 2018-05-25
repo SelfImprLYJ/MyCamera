@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dedede"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"/>
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp">
+
+
+        <com.dinuscxj.progressbar.CircleProgressBar
+            android:id="@+id/progress"
+            android:layout_width="94dp"
+            android:layout_height="94dp"
+            app:progress_stroke_cap="round"
+            android:progress="0"
+            android:max="100"
+            app:style="solid_line"
+            app:progress_stroke_width="3dp"
+            app:background_color="@android:color/transparent"
+            app:progress_start_color="@color/color_red"
+            app:progress_end_color="@color/color_red"
+            app:progress_background_color="@android:color/transparent"/>
+
+        <ImageView
+            android:id="@+id/startBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/tag_camera_start"/>
+    </FrameLayout>
+
+
+</RelativeLayout>
