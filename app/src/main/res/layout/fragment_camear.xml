@@ -9,44 +9,75 @@
 
     <com.example.liyongjian.mycamear.AutoFitTextureView
         android:id="@+id/texture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"/>
+        android:text="0" />
 
-
-    <FrameLayout
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/ll_bottom"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp">
+        android:layout_marginBottom="35dp"
+        android:text="@string/txt_reminder"
+        android:textColor="@color/color_white"
+        android:textSize="16sp" />
 
-
-        <com.dinuscxj.progressbar.CircleProgressBar
-            android:id="@+id/progress"
-            android:layout_width="94dp"
-            android:layout_height="94dp"
-            app:progress_stroke_cap="round"
-            android:progress="0"
-            android:max="100"
-            app:style="solid_line"
-            app:progress_stroke_width="3dp"
-            app:background_color="@android:color/transparent"
-            app:progress_start_color="@color/color_red"
-            app:progress_end_color="@color/color_red"
-            app:progress_background_color="@android:color/transparent"/>
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <ImageView
-            android:id="@+id/startBtn"
-            android:layout_width="wrap_content"
+            android:id="@+id/iv_camera_switch"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_camera_switch"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:src="@mipmap/tag_camera_start"/>
-    </FrameLayout>
+            >
+            <com.dinuscxj.progressbar.CircleProgressBar
+                android:id="@+id/progress"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:layout_gravity="center_horizontal"
+                android:max="100"
+                android:progress="0"
+                app:background_color="@android:color/transparent"
+                app:progress_background_color="@android:color/transparent"
+                app:progress_end_color="@color/color_red"
+                app:progress_start_color="@color/color_red"
+                app:progress_stroke_cap="round"
+                app:progress_stroke_width="3dp"
+                app:style="solid_line" />
+
+            <ImageView
+                android:id="@+id/startBtn"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:src="@mipmap/tag_camera_start" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>
