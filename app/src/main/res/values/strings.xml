@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyCamear</string>
+    <string name="app_name">MyCamera</string>
     <string name="request_permission">This sample needs camera permission.</string>
     <string name="camera_error">This device doesn\'t support Camera2 API.</string>
     <string name="txt_reminder">轻触拍照，长按拍摄</string>
