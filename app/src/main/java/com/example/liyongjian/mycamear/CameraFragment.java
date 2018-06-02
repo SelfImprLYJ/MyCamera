@@ -70,6 +70,8 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Vi
 
     private boolean mFlashSupported;
 
+    private ImageView iv_camera_switch;
+
     /**
      * Max preview width that is guaranteed by Camera2 API
      */
@@ -98,7 +100,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Vi
 
     private int mPhotoBeep;
 
-    private boolean isFront;
+    private boolean isFront = false;
 
     private AutoFitTextureView mTextureView;
 
@@ -280,10 +282,12 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Vi
         progress = view.findViewById(R.id.progress);
         tv = view.findViewById(R.id.tv);
         mTextureView = view.findViewById(R.id.texture);
+        iv_camera_switch = view.findViewById(R.id.iv_camera_switch);
 
         startBtn.setOnClickListener(this);
         startBtn.setOnLongClickListener(this);
         startBtn.setOnTouchListener(this);
+        iv_camera_switch.setOnClickListener(this);
 
     }
 
@@ -345,7 +349,17 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Vi
                 Log.d(TAG,"take picture");
                 checkAndPlayShutterdSound();
                 break;
+            case R.id.iv_camera_switch:
+                switchCamera();
+                break;
         }
+    }
+
+    private void switchCamera() {
+        isFront = !isFront;
+        closeCamera();
+        openCamera(mTextureView.getWidth(),mTextureView.getHeight());
+
     }
 
     @Override
@@ -427,9 +441,16 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Vi
                     // We don't use a front facing camera in this sample.
                     Integer facing = characteristics.get(CameraCharacteristics.LENS_FACING);
 
-                    if (facing != null && facing == CameraCharacteristics.LENS_FACING_FRONT) {
-                        continue;
+                    if (isFront){
+                        if (facing != null && facing != CameraCharacteristics.LENS_FACING_FRONT) {
+                            continue;
+                        }
+                    }else {
+                        if (facing != null && facing == CameraCharacteristics.LENS_FACING_FRONT) {
+                            continue;
+                        }
                     }
+
 
                     StreamConfigurationMap map = characteristics.get(
                             CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
